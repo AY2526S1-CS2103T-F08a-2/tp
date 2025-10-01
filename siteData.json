@@ -7,9 +7,9 @@
       "headings": {
         "about-us": "About Us",
         "project-team": "Project team",
-        "john-doe": "John Doe",
-        "jane-doe": "Jane Doe",
-        "johnny-doe": "Johnny Doe",
+        "yorick-chew": "Yorick Chew",
+        "michelle": "Michelle",
+        "gabriel-tan": "Gabriel Tan",
         "goo-zheng-xien-sean": "Goo Zheng Xien Sean",
         "benjamin-lim": "Benjamin Lim"
       },
@@ -136,6 +136,14 @@
       "headingKeywords": {}
     },
     {
+      "src": "team/gabriel-tan.md",
+      "title": "Gabriel Tan'ss Project Portfolio Page",
+      "headings": {
+        "project-addressbook-level-3": "Project: AddressBook Level 3"
+      },
+      "headingKeywords": {}
+    },
+    {
       "src": "team/glaicalthorn.md",
       "title": "Benjamin Lim's Project Portfolio Page",
       "headings": {
@@ -152,8 +160,16 @@
       "headingKeywords": {}
     },
     {
-      "src": "team/johndoe.md",
-      "title": "John Doe's Project Portfolio Page",
+      "src": "team/michelle.md",
+      "title": "Michelle's Project Portfolio Page",
+      "headings": {
+        "project-addressbook-level-3": "Project: AddressBook Level 3"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/yorickchew.md",
+      "title": "Yorick's Project Portfolio Page",
       "headings": {
         "project-addressbook-level-3": "Project: AddressBook Level 3"
       },
