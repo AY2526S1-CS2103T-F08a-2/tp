@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.estatemate.logic.commands.AddTenantCommand;
 import seedu.estatemate.logic.commands.ClearCommand;
-import seedu.estatemate.logic.commands.DeleteCommand;
+import seedu.estatemate.logic.commands.DeleteTenantCommand;
 import seedu.estatemate.logic.commands.EditCommand;
 import seedu.estatemate.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.estatemate.logic.commands.ExitCommand;
@@ -48,9 +48,9 @@ public class EstateMateParserTest {
 
     @Test
     public void parseCommand_delete() throws Exception {
-        DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+        DeleteTenantCommand command = (DeleteTenantCommand) parser.parseCommand(
+                DeleteTenantCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new DeleteTenantCommand(INDEX_FIRST_PERSON), command);
     }
 
     @Test
