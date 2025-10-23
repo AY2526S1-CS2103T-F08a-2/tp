@@ -3,19 +3,32 @@
 skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
+skinparam ClassAttributeFontColor #MODEL_COLOR
+skinparam ClassAttributeIconSize 0
 
-AddressBook *-right-> "1" UniquePersonList
-AddressBook *-right-> "1" UniqueTagList
-UniqueTagList -[hidden]down- UniquePersonList
-UniqueTagList -[hidden]down- UniquePersonList
-
-UniqueTagList -right-> "*" Tag
+EstateMate -right-> "1" UniquePersonList
+EstateMate -right-> "1" UniqueJobList
 UniquePersonList -right-> Person
+UniqueJobList -right-> Job
 
-Person -up-> "*" Tag
+UniqueJobList -[hidden]down- UniquePersonList
 
-Person *--> Name
-Person *--> Phone
-Person *--> Email
-Person *--> Address
+show Person attributes
+class Person {
+  +jobs : List<int>
+}
+Person --> "1" Name
+Person --> "1" Phone
+Person --> "1" Email
+Person --> "1" Address
+
+Person --> "*" Tag
+
+show Job attributes
+class Job {
+  +id : int
+  +isDone : boolean
+}
+Job --> "1" Description
+
 @enduml
