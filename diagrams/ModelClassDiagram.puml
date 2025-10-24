@@ -19,6 +19,7 @@ Class Email
 Class Name
 Class Phone
 Class Tag
+Class PayDate
 
 Class I #FFFFFF
 }
@@ -42,6 +43,7 @@ Person *--> Phone
 Person *--> Email
 Person *--> Address
 Person *--> "*" Tag
+Person *--> PayDate
 
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
