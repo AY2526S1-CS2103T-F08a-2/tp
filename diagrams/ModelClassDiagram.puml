@@ -18,6 +18,8 @@ Class Address
 Class Email
 Class Name
 Class Phone
+Class Lease
+Class LeaseAmount
 Class Tag
 Class PayDate
 
@@ -42,6 +44,8 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
+Person *--> Lease
+Person *--> LeaseAmount
 Person *--> "*" Tag
 Person *--> PayDate
 
@@ -51,6 +55,8 @@ UniquePersonList -[hidden]right-> I
 Name -[hidden]right-> Phone
 Phone -[hidden]right-> Address
 Address -[hidden]right-> Email
+Email -[hidden]right-> Lease
+Lease -[hidden]right-> LeaseAmount
 
 ModelManager --> "~* filtered" Person
 @enduml

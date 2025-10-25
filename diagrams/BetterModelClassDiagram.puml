@@ -21,6 +21,8 @@ Person --> "1" Name
 Person --> "1" Phone
 Person --> "1" Email
 Person --> "1" Address
+Person --> "1" Lease
+Person --> "1" LeaseAmount
 Person --> "*" Tag
 Person --> "1" PayDate
 
