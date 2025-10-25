@@ -11,7 +11,7 @@ public class PayDateTest {
     @Test
     public void construct_null_throwsNullPointerException() {
         // throws exception when input is null
-        assertFalse(PayDate.isValidPayDate(null));
+        assertThrows(NullPointerException.class, () -> PayDate.isValidPayDate(null));
     }
 
     @Test
@@ -24,7 +24,7 @@ public class PayDateTest {
     @Test
     public void isValidPayDate() {
         // null pay date
-        assertFalse(PayDate.isValidPayDate(null));
+        assertThrows(NullPointerException.class, () -> PayDate.isValidPayDate(null));
 
         // all possible invalid pay dates
         assertFalse(PayDate.isValidPayDate(""));

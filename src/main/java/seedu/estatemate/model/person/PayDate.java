@@ -17,7 +17,7 @@ public class PayDate {
      * The first character of the pay date must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "\\d{4}-\\d{2}-\\d{2}";
 
     public static final String MESSAGE_CONSTRAINTS = "Pay date must be in the format: yyyy-MM-dd, "
             + "and it should not be blank";
@@ -25,7 +25,9 @@ public class PayDate {
     private static final DateTimeFormatter DATE_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    public final LocalDate value;
+    public final String value;
+
+    private final LocalDate date;
 
     /**
      * Constructs a {@code PayDate}.
@@ -35,22 +37,21 @@ public class PayDate {
     public PayDate(String payDate) {
         requireNonNull(payDate);
         checkArgument(isValidPayDate(payDate), MESSAGE_CONSTRAINTS);
-        value = LocalDate.parse(payDate.trim(), DATE_FORMATTER);
+        value = payDate.trim();
+        date = LocalDate.parse(value, DATE_FORMATTER);
     }
 
     /**
      * Returns true if a given string is a valid date in the correct format.
      */
-    public static boolean isValidPayDate(String input) {
-        if (input == null || input.trim().isEmpty()) {
+    public static boolean isValidPayDate(String test) {
+        requireNonNull(test);
+        if (!test.matches(VALIDATION_REGEX)) {
             return false;
         }
-        String trimmedInput = input.trim();
-        if (!trimmedInput.matches(VALIDATION_REGEX)) {
-            return false;
-        }
+
         try {
-            LocalDate.parse(trimmedInput.trim(), DATE_FORMATTER);
+            LocalDate.parse(test, DATE_FORMATTER);
             return true;
         } catch (DateTimeParseException e) {
             return false;
@@ -59,7 +60,7 @@ public class PayDate {
 
     @Override
     public String toString() {
-        return value.format(DATE_FORMATTER);
+        return date.format(DATE_FORMATTER);
     }
 
     @Override
