@@ -1,0 +1,38 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor STORAGE_COLOR
+skinparam classBackgroundColor STORAGE_COLOR
+skinparam classAttributeIconSize 0
+
+package Storage <<Rectangle>> {
+
+  class StorageManager
+  class JsonEstateMateStorage
+  class JsonSerializableEstateMate {
+    - persons : List<JsonAdaptedPerson>
+    - jobs : List<JsonAdaptedJob>
+    {static} + MESSAGE_DUPLICATE_JOB : String
+    + toModelType() : EstateMate
+  }
+  class JsonAdaptedJob {
+    - id : Integer
+    - description : String
+    - isDone : Boolean
+    + toModelType() : Job
+  }
+
+  StorageManager o--> JsonEstateMateStorage
+  JsonEstateMateStorage o--> JsonSerializableEstateMate
+  JsonSerializableEstateMate o--> JsonAdaptedJob
+
+  note right of JsonSerializableEstateMate
+    Rejects duplicates on:
+    • job id
+    • job description
+    Throws IllegalValueException
+    -> bubbles as DataLoadingException
+    -> MainApp starts with empty data
+  end note
+}
+@enduml

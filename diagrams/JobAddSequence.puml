@@ -1,0 +1,72 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+actor User as user USER_COLOR
+
+box UI UI_COLOR_T1
+  participant ":MainWindow" as ui UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+  participant ":LogicManager" as logic LOGIC_COLOR
+  participant ":AddJobCommandParser" as parser LOGIC_COLOR
+  participant "c:AddJobCommand" as cmd LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+  participant ":ModelManager" as model MODEL_COLOR
+  participant ":EstateMate" as em MODEL_COLOR
+  participant ":UniqueJobList" as ujl MODEL_COLOR
+end box
+
+box Storage STORAGE_COLOR_T1
+  participant ":StorageManager" as store STORAGE_COLOR
+end box
+
+user -[USER_COLOR]> ui : "job d/replace sink"
+activate ui UI_COLOR
+
+ui -[UI_COLOR]> logic : execute("job d/replace sink")
+activate logic LOGIC_COLOR
+
+logic -[LOGIC_COLOR]> parser : parse(args)
+activate parser LOGIC_COLOR
+parser --[LOGIC_COLOR]> logic : AddJobCommand(desc)
+deactivate parser
+
+logic -[LOGIC_COLOR]> cmd : execute(model)
+activate cmd LOGIC_COLOR
+
+cmd -[LOGIC_COLOR]> model : nextJobId()
+activate model MODEL_COLOR
+model --[MODEL_COLOR]> cmd : newId
+deactivate model
+
+cmd -[LOGIC_COLOR]> model : addJob(new Job(desc, newId))
+activate model MODEL_COLOR
+model -[MODEL_COLOR]> em : addJob(job)
+activate em MODEL_COLOR
+em -[MODEL_COLOR]> ujl : add(job)
+activate ujl MODEL_COLOR
+ujl --[MODEL_COLOR]> em
+deactivate ujl
+em --[MODEL_COLOR]> model
+deactivate em
+model --[MODEL_COLOR]> cmd
+deactivate model
+
+cmd --[LOGIC_COLOR]> logic : CommandResult("New job added: ...")
+deactivate cmd
+
+logic -[LOGIC_COLOR]> store : saveEstateMate(...)
+activate store STORAGE_COLOR
+store --[STORAGE_COLOR]> logic
+deactivate store
+
+logic --[LOGIC_COLOR]> ui : result
+deactivate logic
+
+ui --[UI_COLOR]> user
+deactivate ui
+@enduml

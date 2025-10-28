@@ -1,0 +1,24 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+skinparam classAttributeIconSize 0
+
+package UI <<Rectangle>> {
+
+  class JobListPanel {
+    - jobListView : ListView<Job>
+  }
+
+  class JobCard {
+    - id : Label
+    - description : Label
+    - status : Label  ' derived from isDone
+  }
+
+  JobListPanel o-- JobCard
+  JobCard ..> Model : reads Job via\nObservableList<Job>
+
+}
+@enduml

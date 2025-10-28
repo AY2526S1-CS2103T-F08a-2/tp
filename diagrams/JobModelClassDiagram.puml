@@ -1,0 +1,75 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+skinparam classAttributeIconSize 0
+
+package Model <<Rectangle>> {
+
+  class EstateMate {
+    - persons : UniquePersonList
+    - jobs : UniqueJobList
+    + addJob(j: Job)
+    + removeJobById(id: int)
+    + markJobById(id: int)
+    + unmarkJobById(id: int)
+    + getJobList() : ObservableList<Job>
+    + nextJobId() : int
+  }
+
+  class ModelManager {
+    - estateMate : EstateMate
+    + addJob(j: Job)
+    + deleteJobById(id: int)
+    + editJobById(id: int, d: Description)
+    + markJobById(id: int)
+    + unmarkJobById(id: int)
+    + getFilteredJobList() : ObservableList<Job>
+    + updateFilteredJobList(p: Predicate<Job>)
+    + nextJobId() : int
+    + getJobDescriptionById(id: int) : String
+    + isJobCompleted(id: int) : Boolean
+    + hasJobWithDescription(d: Description) : boolean
+  }
+
+  class UniqueJobList {
+    - internalList : ObservableList<Job>
+    + add(j: Job)
+    + remove(j: Job)
+    + containsDescription(d: Description) : boolean
+    + mark(j: Job)
+    + unmark(j: Job)
+    + asUnmodifiableObservableList() : ObservableList<Job>
+  }
+
+  class Job {
+    - id : int
+    - description : Description
+    - isDone : boolean
+    + getId() : int
+    + getDescription() : Description
+    + getDone() : boolean
+    + setDone(done: boolean)
+    + isSameJob(other: Job) : boolean
+  }
+
+  class Description {
+    - description : String
+    {static} + MESSAGE_CONSTRAINTS : String
+    {static} + isValidDescription(s: String) : boolean
+  }
+
+  class Person {
+    - jobs : List<int>  ' references job ids
+  }
+
+  ' relationships
+  EstateMate *-- UniqueJobList
+  UniqueJobList o-- Job
+  Job *-- Description
+  ModelManager --> EstateMate
+  Person ..> Job : stores job ids (int)\n(not object refs)
+
+}
+@enduml
