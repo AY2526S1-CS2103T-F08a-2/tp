@@ -130,13 +130,14 @@
         "2-2-user-interface-overview": "2.2 User Interface Overview",
         "2-3-understanding-command-prefix": "2.3 Understanding Command Prefix",
         "3-features": "3. Features",
-        "3-1-command-summary": "3.1 Command Summary",
-        "3-2-features-related-to-tenants": "3.2 Features Related To Tenants",
-        "3-3-features-related-to-maintenance-jobs": "3.3 Features Related to Maintenance Jobs",
-        "3-4-general-features": "3.4 General Features",
-        "4-faq-and-known-issues": "4. FAQ and Known Issues",
-        "4-1-known-issues": "4.1 Known issues",
-        "5-glossary": "5. Glossary"
+        "3-1-tenant-management": "3.1 Tenant Management",
+        "3-2-maintenance-job-management": "3.2 Maintenance Job Management",
+        "3-3-general-utilities": "3.3 General Utilities",
+        "4-command-summary": "4. Command Summary",
+        "5-faq-and-known-issues": "5. FAQ and Known Issues",
+        "5-1-faq": "5.1 FAQ",
+        "5-2-known-issues": "5.2 Known issues",
+        "6-glossary": "6. Glossary"
       },
       "headingKeywords": {}
     },
