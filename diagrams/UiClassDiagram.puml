@@ -40,6 +40,7 @@ MainWindow *-down-> "1" StatusBarFooter
 MainWindow --> "0..1" HelpWindow
 
 TenantListPanel -down-> "*" TenantCard
+JobListPanel -down-> "*" JobCard
 
 MainWindow -left-|> UiPart
 
@@ -52,11 +53,12 @@ JobCard --|> UiPart
 StatusBarFooter --|> UiPart
 HelpWindow --|> UiPart
 
-TenantCard ..> Model
+TenantCard --> Model
 JobCard ..> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
+JobListPanel -[hidden]left- TenantListPanel
 TenantListPanel -[hidden]left- HelpWindow
 HelpWindow -[hidden]left- CommandBox
 CommandBox -[hidden]left- ResultDisplay
