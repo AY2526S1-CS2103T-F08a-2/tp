@@ -6,6 +6,7 @@ import static seedu.estatemate.commons.util.AppUtil.checkArgument;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 /**
  * Represents a Person's lease in EstateMate.
@@ -24,7 +25,8 @@ public class Lease {
      */
     public static final String VALIDATION_REGEX = "\\d{4}-\\d{2}-\\d{2} \\d{4}-\\d{2}-\\d{2}";
 
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("uuuu-MM-dd")
+            .withResolverStyle(ResolverStyle.STRICT);
 
     public final String value;
 

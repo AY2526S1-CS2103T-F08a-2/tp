@@ -47,6 +47,8 @@ public class LeaseTest {
         assertFalse(Lease.isValidLease("2025-02-10 2024-02-10")); // start date after end date
         assertFalse(Lease.isValidLease("2025-02-10 2025-19-02")); // date does not exist
         assertFalse(Lease.isValidLease("2025-02-33 2025-03-02")); // date does not exist
+        // date 2025-02-29 does not exist (for resolver strict DateTimeFormatter)
+        assertFalse(Lease.isValidLease("2025-02-29 2025-03-02"));
 
         // valid leases
         assertTrue(Lease.isValidLease("2025-12-01 2025-12-08")); // different day digits
