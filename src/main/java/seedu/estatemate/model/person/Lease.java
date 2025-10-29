@@ -36,7 +36,7 @@ public class Lease {
     /**
      * Constructs a {@code Lease}.
      *
-     * @param lease A valid lease of format "yyyy-MM-dd yyyy-MM-dd".
+     * @param lease A valid lease of format "uuuu-MM-dd uuuu-MM-dd".
      */
     public Lease(String lease) {
         requireNonNull(lease);

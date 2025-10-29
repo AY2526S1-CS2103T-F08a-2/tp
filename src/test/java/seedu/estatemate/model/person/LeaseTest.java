@@ -40,6 +40,7 @@ public class LeaseTest {
         assertFalse(Lease.isValidLease("2025/02/01 02/02/2025")); // use of slash instead of hyphen
         assertFalse(Lease.isValidLease("01-02-2025 2025-02-02")); // single invalid date format
         assertFalse(Lease.isValidLease("2025-02-01 02-02-2025")); // single invalid date format
+        assertFalse(Lease.isValidLease("-2025-02-29 -2025-03-02")); // negative year dates (to indicate BCE)
 
         // invalid dates
         assertFalse(Lease.isValidLease("2025-19-01 2025-20-02")); // swapped day and month: YYYY-dd-MM
@@ -47,7 +48,7 @@ public class LeaseTest {
         assertFalse(Lease.isValidLease("2025-02-10 2024-02-10")); // start date after end date
         assertFalse(Lease.isValidLease("2025-02-10 2025-19-02")); // date does not exist
         assertFalse(Lease.isValidLease("2025-02-33 2025-03-02")); // date does not exist
-        // date 2025-02-29 does not exist (for resolver strict DateTimeFormatter)
+        // date 2025-02-29 is not a valid calendar date (for resolver strict DateTimeFormatter)
         assertFalse(Lease.isValidLease("2025-02-29 2025-03-02"));
 
         // valid leases
@@ -77,5 +78,15 @@ public class LeaseTest {
 
         // different values -> returns false
         assertFalse(lease.equals(new Lease("2026-11-12 2030-05-16")));
+    }
+
+    @Test
+    public void toDisplayValue() {
+        Lease lease = new Lease("2024-03-21 2028-09-21");
+        String actualDisplayValue = lease.toDisplayValue();
+
+        String expectedDisplayValue = "2024-03-21 to 2028-09-21";
+
+        assertTrue(actualDisplayValue.equals(expectedDisplayValue));
     }
 }
