@@ -6,10 +6,10 @@ skinparam classBackgroundColor MODEL_COLOR
 skinparam ClassAttributeFontColor #MODEL_COLOR
 skinparam ClassAttributeIconSize 0
 
-EstateMate -right-> "1" UniquePersonList
-EstateMate -right-> "1" UniqueJobList
-UniquePersonList -right-> Person
-UniqueJobList -right-> Job
+EstateMate *-right-> "1" UniquePersonList
+EstateMate *-right-> "1" UniqueJobList
+UniquePersonList -right-> "*" Person
+UniqueJobList -right-> "*" Job
 
 UniqueJobList -[hidden]down- UniquePersonList
 
@@ -17,20 +17,20 @@ show Person attributes
 class Person {
   +jobs : List<int>
 }
-Person --> "1" Name
-Person --> "1" Phone
-Person --> "1" Email
-Person --> "1" Address
-Person --> "1" Lease
-Person --> "1" LeaseAmount
-Person --> "*" Tag
-Person --> "1" PayDate
+Person *--> "1" Name
+Person *--> "1" Phone
+Person *--> "1" Email
+Person *--> "1" Address
+Person *--> "1" Lease
+Person *--> "1" LeaseAmount
+Person *--> "*" Tag
+Person *--> "1" PayDate
 
 show Job attributes
 class Job {
   +id : int
   +isDone : boolean
 }
-Job --> "1" Description
+Job *--> "1" Description
 
 @enduml

@@ -4,7 +4,7 @@ skinparam ArrowFontStyle plain
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":EstateMateParser" as EstateMateParser LOGIC_COLOR
 participant ":DeleteTenantCommandParser" as DeleteTenantCommandParser LOGIC_COLOR
 participant "d:DeleteTenantCommand" as DeleteTenantCommand LOGIC_COLOR
 participant "r:CommandResult" as CommandResult LOGIC_COLOR
@@ -17,17 +17,17 @@ end box
 [-> LogicManager : execute("delete 1")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("delete 1")
-activate AddressBookParser
+LogicManager -> EstateMateParser : parseCommand("dtenant 1")
+activate EstateMateParser
 
 create DeleteTenantCommandParser
-AddressBookParser -> DeleteTenantCommandParser
+EstateMateParser -> DeleteTenantCommandParser
 activate DeleteTenantCommandParser
 
-DeleteTenantCommandParser --> AddressBookParser
+DeleteTenantCommandParser --> EstateMateParser
 deactivate DeleteTenantCommandParser
 
-AddressBookParser -> DeleteTenantCommandParser : parse("1")
+EstateMateParser -> DeleteTenantCommandParser : parse("1")
 activate DeleteTenantCommandParser
 
 create DeleteTenantCommand
@@ -37,14 +37,14 @@ activate DeleteTenantCommand
 DeleteTenantCommand --> DeleteTenantCommandParser :
 deactivate DeleteTenantCommand
 
-DeleteTenantCommandParser --> AddressBookParser : d
+DeleteTenantCommandParser --> EstateMateParser : d
 deactivate DeleteTenantCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-DeleteTenantCommandParser -[hidden]-> AddressBookParser
+DeleteTenantCommandParser -[hidden]-> EstateMateParser
 destroy DeleteTenantCommandParser
 
-AddressBookParser --> LogicManager : d
-deactivate AddressBookParser
+EstateMateParser --> LogicManager : d
+deactivate EstateMateParser
 
 LogicManager -> DeleteTenantCommand : execute(m)
 activate DeleteTenantCommand
