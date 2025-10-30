@@ -38,7 +38,6 @@
     },
     {
       "src": "DeveloperGuide.md",
-      "title": "Developer Guide",
       "headings": {
         "estatemate-developer-guide": "EstateMate Developer Guide",
         "acknowledgements": "Acknowledgements",
@@ -46,6 +45,7 @@
         "design": "Design",
         "architecture": "Architecture",
         "ui-component": "UI component",
+        "logic-component": "Logic component",
         "model-component": "Model component",
         "storage-component": "Storage component",
         "common-classes": "Common classes",
