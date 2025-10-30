@@ -81,8 +81,14 @@
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
-        "deleting-a-person": "Deleting a person",
-        "saving-data": "Saving data"
+        "deleting-a-tenant": "Deleting a tenant",
+        "adding-a-job": "Adding a job",
+        "finding-tenants": "Finding tenants",
+        "finding-jobs": "Finding jobs",
+        "linking-jobs-to-a-tenant": "Linking jobs to a tenant",
+        "appendix-planned-enhancements": "Appendix: Planned Enhancements",
+        "appendix-effort": "Appendix: Effort",
+        "project-achievements": "Project Achievements"
       },
       "headingKeywords": {}
     },
