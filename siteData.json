@@ -38,6 +38,7 @@
     },
     {
       "src": "DeveloperGuide.md",
+      "title": "Developer Guide",
       "headings": {
         "estatemate-developer-guide": "EstateMate Developer Guide",
         "acknowledgements": "Acknowledgements",
