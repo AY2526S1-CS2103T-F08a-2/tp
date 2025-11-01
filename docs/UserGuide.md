@@ -552,4 +552,5 @@ UPPER_CASE Parameter                              | A placeholder for a paramete
 <a name="job"></a>Job                             | A maintenance task that is related to the property you are tracking. Jobs can be linked to tenants. 
 <a name="job-number"></a>Job Number               | The number shown beside a job in the EstateMate app. Commands like `djob 3` use this number.
 <a name="index"></a>Index                         | The number displayed beside each tenant or job in the EstateMate app. Commands like `delete 2` use this number.
+
 <br>
