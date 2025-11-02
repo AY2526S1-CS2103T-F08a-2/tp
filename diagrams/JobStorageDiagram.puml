@@ -3,8 +3,12 @@
 skinparam arrowThickness 1.1
 skinparam arrowColor STORAGE_COLOR
 skinparam classBackgroundColor STORAGE_COLOR
-skinparam classAttributeIconSize 0
+skinparam ClassAttributeFontColor #MODEL_COLOR
+skinparam ClassAttributeIconSize 0
 
+show attributes
+show fields
+show methods
 package Storage <<Rectangle>> {
 
   class StorageManager
@@ -12,7 +16,7 @@ package Storage <<Rectangle>> {
   class JsonSerializableEstateMate {
     - persons : List<JsonAdaptedPerson>
     - jobs : List<JsonAdaptedJob>
-    {static} + MESSAGE_DUPLICATE_JOB : String
+
     + toModelType() : EstateMate
   }
   class JsonAdaptedJob {
@@ -28,9 +32,9 @@ package Storage <<Rectangle>> {
 
   note right of JsonSerializableEstateMate
     Rejects duplicates on:
-    • job id
-    • job description
-    Throws IllegalValueException
+    -> job id
+    -> job description
+    Throws IllegalValueException:
     -> bubbles as DataLoadingException
     -> MainApp starts with empty data
   end note

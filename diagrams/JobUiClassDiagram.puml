@@ -4,7 +4,11 @@ skinparam arrowThickness 1.1
 skinparam arrowColor UI_COLOR_T4
 skinparam classBackgroundColor UI_COLOR
 skinparam classAttributeIconSize 0
+skinparam ClassAttributeFontColor #MODEL_COLOR
+skinparam ClassAttributeIconSize 0
 
+show attributes
+show fields
 package UI <<Rectangle>> {
 
   class JobListPanel {
