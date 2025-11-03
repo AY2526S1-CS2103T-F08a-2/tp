@@ -18,11 +18,10 @@ package UI <<Rectangle>> {
   class JobCard {
     - id : Label
     - description : Label
-    - status : Label  ' derived from isDone
+    - status : Label
   }
 
   JobListPanel o-- JobCard
-  JobCard ..> Model : reads Job via\nObservableList<Job>
 
 }
 @enduml

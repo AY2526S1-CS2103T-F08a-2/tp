@@ -33,7 +33,6 @@ package Storage <<Rectangle>> {
   note right of JsonSerializableEstateMate
     Rejects duplicates on:
     -> job id
-    -> job description
     Throws IllegalValueException:
     -> bubbles as DataLoadingException
     -> MainApp starts with empty data

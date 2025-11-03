@@ -10,6 +10,7 @@ end box
 
 box Logic LOGIC_COLOR_T1
   participant ":LogicManager" as logic LOGIC_COLOR
+  participant ":EstateMateParser" as emParser LOGIC_COLOR
   participant ":AddJobCommandParser" as parser LOGIC_COLOR
   participant "c:AddJobCommand" as cmd LOGIC_COLOR
 end box
@@ -30,10 +31,16 @@ activate ui UI_COLOR
 ui -[UI_COLOR]> logic : execute("job d/replace sink")
 activate logic LOGIC_COLOR
 
-logic -[LOGIC_COLOR]> parser : parse(args)
+logic -[LOGIC_COLOR]> emParser : parseCommand("job d/replace sink")
+activate emParser LOGIC_COLOR
+
+emParser -[LOGIC_COLOR]> parser : parse(args)
 activate parser LOGIC_COLOR
-parser --[LOGIC_COLOR]> logic : AddJobCommand(desc)
+parser --[LOGIC_COLOR]> emParser : AddJobCommand(desc)
 deactivate parser
+
+emParser --[LOGIC_COLOR]> logic : AddJobCommand(desc)
+deactivate emParser
 
 logic -[LOGIC_COLOR]> cmd : execute(model)
 activate cmd LOGIC_COLOR
